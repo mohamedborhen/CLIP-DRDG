@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 
 # === Bases Messidor à traiter ===
 bases = ["base11", "base12", "base13", "base14"]
-base_dir = r"C:\Users\ensi02\Desktop\dataset DR detection\datasets\messidor"
+base_dir = r"put the path to your downloaded messidor dataset"
 output_dir = "messidor_converted"
 
 # === Lire et fusionner tous les fichiers .xls ===
