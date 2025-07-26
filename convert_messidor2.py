@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 # Chemins à modifier selon ton dossier
-base_dir = r"C:\Users\ensi02\Downloads\messidor-2"
+base_dir = r"put the path to your downloaded messidor2 dataset"
 images_dir = os.path.join(base_dir, "messidor-2")
 csv_path = os.path.join(base_dir, "data.csv")  # remplace par le nom exact de ton csv
 
