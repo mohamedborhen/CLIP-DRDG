@@ -145,7 +145,7 @@ python -m domainbed.scripts.collect_results --input_dir COOPLVT_TRAINING_LOGS
 # -------- Averages, model selection method: training-domain validation set
 ```
 
-### 🔧 Enhanced Tools and Utilities
+###  Enhanced Tools and Utilities
 
 The enhanced version includes several useful tools:
 
