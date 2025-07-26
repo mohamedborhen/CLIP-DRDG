@@ -3,7 +3,7 @@ import shutil
 import pandas as pd
 
 # Set the path to your APTOS dataset folder
-base_input_dir = r"C:\Users\ensi02\Desktop\dataset DR detection\datasets\aptos"
+base_input_dir = r"put the path to your downloaded aptos dataset"
 base_output_dir = "augmented_resized_V2"
 
 splits = ["train", "valid", "test"]
