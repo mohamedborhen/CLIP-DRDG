@@ -1,7 +1,7 @@
 import pandas as pd
 
 # 🔁 Change ce chemin pour tester chaque fichier
-xls_path = r"C:\Users\ensi02\Desktop\dataset DR detection\datasets\messidor\base121.xls"
+xls_path = r"put path to messidor's base121.xls file here"
 
 # Lire le fichier
 df = pd.read_excel(xls_path)
