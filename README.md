@@ -8,14 +8,14 @@
 
 Diabetic Retinopathy (DR), a leading cause of vision impairment, requires early detection and treatment. Developing robust AI models for DR classification holds substantial potential, but a key challenge is ensuring their generalization in unfamiliar domains with varying data distributions. To address this, our paper investigates cross-domain generalization, also known as domain generalization (DG), within the context of DR classification. DG, a challenging problem in the medical domain, is complicated by the difficulty of gathering labeled data across different domains, such as patient demographics and disease stages. Some recent studies have shown the effectiveness of using CLIP to handle the DG problem in natural images. In this study, we investigate CLIP’s transfer learning capabilities and its potential for cross-domain generalization in diabetic retinopathy (DR) classification. We carry out comprehensive experiments to assess the efficacy and potential of CLIP in addressing DG for DR classification. Further, we introduce a multi-modal finetuning strategy named Context Optimization with Learnable Visual Tokens (CoOpLVT). The original code is publicly available at https://github.com/Sanoojan/CLIP-DRDG
 
-## 🆕 Enhanced Features
+##  Enhanced Features
 
 This enhanced version includes significant improvements to address class imbalance and improve training robustness:
 
-- **🔬 Medical-Specific Augmentations**: Conservative augmentation strategies optimized for fundus image characteristics  
-- **⚡ CLIP Optimization**: Proper CLIP normalization constants for optimal medical domain adaptation
-- **🛠️ Enhanced Dataset Loader**: Robust DR dataset class with automatic structure detection and error handling
-- **📊 Improved Training Stability**: Class weighting, label smoothing, and advanced regularization techniques
+- ** Medical-Specific Augmentations**: Conservative augmentation strategies optimized for fundus image characteristics  
+- ** CLIP Optimization**: Proper CLIP normalization constants for optimal medical domain adaptation
+- ** Enhanced Dataset Loader**: Robust DR dataset class with automatic structure detection and error handling
+- ** Improved Training Stability**: Class weighting, label smoothing, and advanced regularization techniques
 
 ## Install Dependencies
 
@@ -68,7 +68,7 @@ class Clip_train_prompt_from_image_v2(Algorithm):
 
 ## How To Use
 
-### 🚀 Enhanced Training Features
+###  Enhanced Training Features
 
 The enhanced version includes new hyperparameters for improved performance:
 
@@ -167,7 +167,7 @@ python plot_cm_after_training.py --results_path ENHANCED_TRAINING_LOGS
 The enhanced version addresses key challenges in diabetic retinopathy classification:
 
 
-### 🔬 Medical Domain Optimization  
+###  Medical Domain Optimization  
 - **CLIP Normalization**: Fixed constants optimized for medical imaging
 - **Conservative Augmentations**: Medical-safe transformations preserving diagnostic features
 - **Fundus-Specific Processing**: Circular crop and vessel enhancement techniques
