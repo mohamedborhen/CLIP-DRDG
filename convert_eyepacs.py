@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 # === Configuration ===
-base_input_dir = r"C:\Users\ensi02\Desktop\dataset DR detection\datasets\eyepacs"
+base_input_dir = r"put the path to your downloaded eyepacs dataset"
 base_output_dir = "eyepacs_converted"
 img_dir = os.path.join(base_input_dir, "train")
 
