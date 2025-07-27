@@ -273,8 +273,60 @@ class DR(MultipleEnvironmentImageFolder):
                     image_size=224
                 )
 
-                path = os.path.join(self.dir, environment)
-                env_dataset = ImageFolder(path, transform=env_transform)
+                env_path = os.path.join(self.dir, environment)
+                
+                # Check if this environment has train/test/valid subdirectories
+                has_splits = any(os.path.exists(os.path.join(env_path, split)) 
+                               for split in ['train', 'test', 'valid'])
+                
+                if has_splits:
+                    # Handle nested structure: combine train/test/valid splits
+                    print(f"INFO: Environment {environment} has train/test/valid splits - combining them")
+                    combined_samples = []
+                    combined_targets = []
+                    classes = None
+                    class_to_idx = None
+                    
+                    for split in ['train', 'test', 'valid']:
+                        split_path = os.path.join(env_path, split)
+                        if os.path.exists(split_path):
+                            split_dataset = ImageFolder(split_path, transform=env_transform)
+                            combined_samples.extend(split_dataset.samples)
+                            combined_targets.extend(split_dataset.targets)
+                            if classes is None:
+                                classes = split_dataset.classes
+                                class_to_idx = split_dataset.class_to_idx
+                            
+                            # Debug: Print class information
+                            print(f"    {split} split: {len(split_dataset)} samples, classes: {split_dataset.classes}")
+                    
+                    print(f"    Combined: {len(combined_samples)} samples, classes: {classes}")
+                    
+                    # Create a custom dataset object
+                    class CombinedImageFolder:
+                        def __init__(self, samples, targets, classes, class_to_idx, transform):
+                            self.samples = samples
+                            self.targets = targets
+                            self.classes = classes
+                            self.class_to_idx = class_to_idx
+                            self.transform = transform
+                            
+                        def __len__(self):
+                            return len(self.samples)
+                        
+                        def __getitem__(self, index):
+                            path, target = self.samples[index]
+                            from PIL import Image
+                            sample = Image.open(path).convert('RGB')
+                            if self.transform:
+                                sample = self.transform(sample)
+                            return sample, target
+                    
+                    env_dataset = CombinedImageFolder(combined_samples, combined_targets, classes, class_to_idx, env_transform)
+                else:
+                    # Handle flat structure: direct class directories
+                    env_dataset = ImageFolder(env_path, transform=env_transform)
+                
                 self.datasets.append(env_dataset)
 
             self.input_shape = (3, 224, 224)
